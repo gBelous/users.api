@@ -6,6 +6,7 @@ pipeline {
                 docker { image 'composer' }
             }
             steps {
+                sh 'cp .env.example .env'
                 sh 'composer install'
                 sh 'ls -la'
                 sh 'php artisan migrate'
