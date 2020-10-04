@@ -7,6 +7,7 @@ pipeline {
             }
             steps {
                 sh 'composer install'
+                sh 'ls -la'
                 sh 'php artisan migrate'
             }
         }
