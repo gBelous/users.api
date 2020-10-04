@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             agent {
-                docker { image 'php:7.4' }
+                docker { image 'php:7.4-alpine' }
             }
             steps {
                 sh 'apt-get update -yqq'
