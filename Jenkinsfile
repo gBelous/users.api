@@ -7,6 +7,7 @@ pipeline {
             }
             steps {
                 sh 'cp .env.example .env'
+                sh 'php artisan key:generate --ansi'
                 sh 'composer install'
                 sh 'ls -la'
                 sh 'php artisan migrate'
