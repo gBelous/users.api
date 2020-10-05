@@ -6,12 +6,11 @@ pipeline {
                 sh 'cp .env.example .env'
                 sh 'composer install'
                 sh 'php artisan key:generate'
-                sh 'php artisan migrate --force'
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                 sh 'vendor/bin/phpunit'
             }
         }
         stage('Deploy') {
