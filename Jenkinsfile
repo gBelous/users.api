@@ -9,7 +9,7 @@ pipeline {
             steps {
                 sh 'cp .env.example .env'
                 sh 'echo "$USER:$HOME"'
-                sh 'echo ls -la'
+                sh 'ls -la'
                 sh 'composer install'
                 sh 'php artisan key:generate'
             }
