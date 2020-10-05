@@ -1,5 +1,9 @@
 pipeline {
-    agent { dockerfile true }
+    agent { 
+        dockerfile {
+            filename 'docker/ci/Dockerfile.ci'
+        }
+    }
     stages {
         stage('Build') {
             steps {
