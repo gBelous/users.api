@@ -1,7 +1,7 @@
 pipeline {
     agent { 
         dockerfile {
-            filename 'docker/ci/Dockerfile.ci'
+            filename 'docker/ci/Dockerfile.build'
         }
     }
     stages {
@@ -18,6 +18,9 @@ pipeline {
             }
         }
         stage('Deploy') {
+            when {
+                branch 'master'
+            }
             steps {
                 echo 'Deploying....'
             }
