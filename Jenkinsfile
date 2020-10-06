@@ -2,7 +2,7 @@ pipeline {
     agent { 
         dockerfile {
             filename 'docker/ci/Dockerfile.build'
-            args '-v /tmp/.composer:/.composer'
+            args '-v /tmp:/.composer'
         }
     }
     stages {
