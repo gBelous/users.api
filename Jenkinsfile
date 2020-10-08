@@ -26,13 +26,13 @@ pipeline {
                  sh 'vendor/bin/phpunit'
             }
         }
-        stage('Deploy') {
+        stage('Build Docker Image') {
             when {
                 branch 'master'
             }
             steps {
-                sh 'docker build -t cr.gbelous.xyz:5000/users-api:${env.BUILD_ID}-${env.BRANCH_NAME} .'
-                sh 'docker push cr.gbelous.xyz:5000/users-api:${env.BUILD_ID}-${env.BRANCH_NAME}'
+                sh "docker build -t cr.gbelous.xyz:5000/users-api:${env.BUILD_ID}-${env.BRANCH_NAME} ."
+                sh "docker push cr.gbelous.xyz:5000/users-api:${env.BUILD_ID}-${env.BRANCH_NAME}"
             }
         }
     }
