@@ -23,7 +23,7 @@ pipeline {
                 branch 'master'
             }
             steps {
-                echo 'docker build -t users-api:${env.BUILD_ID} .'
+                sh 'docker build -t users-api:${env.BUILD_ID} .'
             }
         }
     }
