@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('Composer') {
+        stage('Install Dependencies') {
             agent { 
                 docker { image 'composer' }
             }
@@ -9,7 +9,7 @@ pipeline {
                 sh 'composer install'
             }
         }
-        stage('Config') {
+        stage('Configuration') {
             agent { 
                 docker { image 'php:7.4-cli' }
             }
@@ -31,9 +31,8 @@ pipeline {
                 branch 'master'
             }
             steps {
-                sh 'docker build -t users-api .'
-                sh 'docker tag users-api cr.gbelous.xyz:5000/users-api'
-                sh 'docker push cr.gbelous.xyz:5000/users-api'
+                sh 'docker build -t cr.gbelous.xyz:5000/users-api:${env.BUILD_ID}-${env.BRANCH_NAME} .'
+                sh 'docker push cr.gbelous.xyz:5000/users-api:${env.BUILD_ID}-${env.BRANCH_NAME}'
             }
         }
     }
