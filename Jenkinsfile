@@ -31,7 +31,9 @@ pipeline {
                 branch 'master'
             }
             steps {
-                sh 'docker build -t http://cr.gbelous.xyz:5000:users-api .'
+                sh 'docker build -t users-api .'
+                sh 'docker tag cr.gbelous.xyz:5000/users-api'
+                sh 'docker push cr.gbelous.xyz:5000/users-api'
             }
         }
     }
