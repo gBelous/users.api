@@ -32,7 +32,7 @@ pipeline {
             }
             steps {
                 sh 'docker build -t users-api .'
-                sh 'docker tag cr.gbelous.xyz:5000/users-api'
+                sh 'docker tag users-api cr.gbelous.xyz:5000/users-api'
                 sh 'docker push cr.gbelous.xyz:5000/users-api'
             }
         }
