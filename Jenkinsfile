@@ -2,7 +2,9 @@ pipeline {
     agent none
     stages {
         stage('Composer') {
-            docker { image 'composer' }
+            agent { 
+                docker { image 'composer' }
+            }
             steps {
                 sh 'composer install'
             }
@@ -17,7 +19,9 @@ pipeline {
             }
         }
         stage('Test') {
-            docker { image 'php:7.4-cli' }
+            agent { 
+                docker { image 'php:7.4-cli' }
+            }
             steps {
                  sh 'vendor/bin/phpunit'
             }
