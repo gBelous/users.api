@@ -1,10 +1,5 @@
 pipeline {
-    agent { 
-        dockerfile {
-            filename 'docker/ci/Dockerfile.build'
-            args '-v /tmp:/.composer'
-        }
-    }
+    agent any
     stages {
         stage('Composer') {
             docker { image 'composer' }
